@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Search image</title>
+    <link rel="stylesheet" href="{{ asset('bundles/waflickr/css/style.css') }}"/>
+</head>
+<body>
+
+<h1>Hello</h1>
+
+
+{{ form_start(searchForm,{attr:{'class':'maClass'}}) }}
+
+<fieldset>
+    <legend>Recherche des photos</legend>
+
+    <ul>
+        <li>{{ form_label(searchForm.tags,'Tags') }}
+            {{ form_widget(searchForm.tags) }}
+        </li>
+        <li>{{ form_label(searchForm.maximum,'Maximum') }}
+            {{ form_widget(searchForm.maximum) }}
+        </li>
+        <li>
+            {{ form_widget(searchForm.send,{label: "Envoyer le message"}) }}
+        </li>
+    </ul>
+</fieldset>
+{{ form_end(searchForm) }}
+
+
+{% if photos is defined %}
+    {% if photos is empty %}
+        <p>aucune photo trouvée</p>
+    {% else %}
+        <p>affichage des photos</p>
+    {% for photo in photos %}
+        <a href="{{ path('wa_flickr_photomore',
+        {farm: photo.farm,
+        id: photo.id,
+        secret: photo.secret,
+        server: photo.server,
+        title: photo.title}
+        ) }}"><img src="{{ photo.url }}" alt="{{ photo.title }}"/></a>
+    {% endfor %}
+    {% endif %}
+
+
+
+{% endif %}
+
+
+</body>
+</html>

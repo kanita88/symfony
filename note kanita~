@@ -1,0 +1,37 @@
+il faut clear les cache sur symfony
+par terminal 
+app/console cahce:clear
+Bundle name : WA/FlickrBundle
+
+Bundle name : WAFlickrBundle
+
+
+pour les contact form
+
+<?php
+
+private function createContactForm()
+    {
+        $formBuilder = $this->createFormBuilder();
+	
+        $formBuilder->add('firstName', 'text');
+        $formBuilder->add('lastName', 'text');
+        $formBuilder->add('email', 'email');
+        $formBuilder->add('message', 'textarea');
+        $formBuilder->add('send', 'submit');
+	
+        return $formBuilder->getForm();
+    }
+
+ou avec celui la plus court
+
+private function createContactForm()
+    {
+        return $this->createFormBuilder()
+            ->add('firstName', 'text')
+            ->add('lastName', 'text')
+            ->add('email', 'email')
+            ->add('message', 'textarea')
+            ->add('send', 'submit')
+            ->getForm();
+    }

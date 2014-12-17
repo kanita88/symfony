@@ -1,0 +1,26 @@
+wa_blog_page:
+    path:     /{page}
+    defaults: { _controller: WABlogBundle:Blog:index, page: 1}
+    requirements:
+        page: \d+
+
+wa_blog_article:
+    path:     /article/{article}
+    defaults: { _controller: WABlogBundle:Article:index}
+
+wa_blog_edit:
+    path:     /article/{article}/edit
+    defaults: { _controller: WABlogBundle:Article:edit}
+
+wa_blog_delete:
+    path:     /article/{article}/delete
+    defaults: { _controller: WABlogBundle:Article:delete}
+
+wa_blog_layout:
+    path:     /article/{article}/layout
+    defaults: { _controller: WABlogBundle:Article:layout}
+
+
+wa_blog_test:
+    path:     /article/{article}/test
+    defaults: { _controller: WABlogBundle:Article:test}

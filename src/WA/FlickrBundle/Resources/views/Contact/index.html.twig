@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+</head>
+<body>
+
+    {% for message in app.session.flashbag.get('notice') %}
+    <div class = "flash-notice">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+{#{{ form(contactForm) }}#}
+
+{{ form_start(contactForm,{attr:{'class':'maClass'}}) }}
+
+<fieldset>
+    <legend>Formulaire de contact</legend>
+
+<ul>
+    <li>{{ form_label(contactForm.firstname,'Prénom') }}
+        {{ form_widget(contactForm.firstname) }}
+    </li>
+    <li>{{ form_label(contactForm.lastname,'Nom') }}
+        {{ form_widget(contactForm.lastname) }}
+    </li>
+    <li>{{ form_label(contactForm.email,'Email') }}
+        {{ form_widget(contactForm.email) }}
+    </li>
+    <li>{{ form_label(contactForm.message,'Message') }}
+        {{ form_widget(contactForm.message) }}
+    </li>
+    <li>
+        {{ form_widget(contactForm.send,{label: "Envoyer le message"}) }}
+    </li>
+</ul>
+</fieldset>
+{{ form_end(contactForm) }}
+
+</body>
+</html>

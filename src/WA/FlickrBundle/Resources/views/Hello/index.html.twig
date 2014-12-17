@@ -1,0 +1,45 @@
+
+<body>
+<h1>Hello {{name}} </h1>
+
+<p>j'ai {{age}} ans</p>
+
+<a href="{{path('wa_flickr_helloworld')}}">Kathy</a>
+<br/>
+<a href="{{ url }}">Kanita</a>
+<br/>
+<a href="{{path('wa_flickr_helloworld',{'name':"Matthias",'age':"5"})}}">Matthias</a>
+<br/>
+
+
+
+<h2>IF - conditions</h2>
+
+{% if age >=8 %}
+<p>vous êtes majeur</p>
+{% else %}
+<p>vous êtes mineur</p>
+{% endif %}
+
+
+<h2>For - Boucles</h2>
+
+{% for i in range(0,20) %}
+
+<p>tour:{{ i }}</p>
+{% endfor %}
+
+
+<h2>FOR(EACH) - Boucles</h2>
+
+{% set products = ["produit1","produit2","produit3","produit4"] %}
+{% for product in products %}
+<p>{{ product }}</p>
+{% else %}
+<p>NONONO</p>
+{% endfor %}
+
+
+
+
+</body>
