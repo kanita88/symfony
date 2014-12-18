@@ -24,7 +24,13 @@ class FlickrPhoto
 
     public function getUrl()
     {
-        $image_url = "https://farm{$this->farm}.staticflickr.com/{$this->server}/{$this->id}_{$this->secret}_q.jpg";
+        $image_url = "https://farm{$this->farm}.staticflickr.com/{$this->server}/{$this->id}_{$this->secret}_m.jpg";
+        return $image_url;
+    }
+
+    public function getBigUrl()
+    {
+        $image_url = "https://farm{$this->farm}.staticflickr.com/{$this->server}/{$this->id}_{$this->secret}_z.jpg";
         return $image_url;
     }
 

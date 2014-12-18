@@ -5,6 +5,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use WA\FlickrBundle\Infrastructure\FlickrService;
+use WA\FlickrBundle\Infrastructure\FlickrPhoto;
 
 
 class SearchController extends Controller
@@ -43,11 +44,28 @@ class SearchController extends Controller
             'photos'=>$photos));
     }
 
-    public function photomoreAction()
+    public function photomoreAction($farm,$id,$server,$secret)
     {
-        echo ('ok');
+        $flickrservice=new FlickrService();
+        $photosinfo=$flickrservice->getPhotoInfos($id,$secret);
+        //var_dump($photosinfo);
+
+       //créer un objet flickerphoto avec toutes les informations dont on dispose
+
+        $image_obj=new FlickrPhoto($farm,$id,$secret,$server,"title");
+        $image_obj->title = $photosinfo->photo->title->_content;
+        $image_obj->description = $photosinfo->photo->description->_content;
+
+
+
+        return $this->render('WAFlickrBundle:Search:photomore.html.twig',
+            array('photo'=>$image_obj));
+
+
+
     }
 
+    
 }
 
 

@@ -44,9 +44,24 @@ class FlickrService
 
 
     }
-    public function getPhotoInfos($photoId)
+    public function getPhotoInfos($photoId,$secret)
     {
+        //appeler API flickr pour obtenir des informations sur image (description+title)
+        $queryFields=array(
+            'api_key'=> FlickrService::API_KEY,
+            'format'=>'json',
+            'method'=> 'flickr.photos.getInfo',
+            'nojsoncallback'=>true,
+            'photo_id'=>$photoId,
+            'secret'=>$secret,
+        );
 
+        $query="https://api.flickr.com/services/rest/?".http_build_query($queryFields);
+
+        $content=file_get_contents($query);
+
+        $content=json_decode($content);
+        return $content;
 
     }
 }

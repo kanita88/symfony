@@ -23,7 +23,7 @@ wa_flickr_search:
         _method: POST
 
 wa_flickr_photomore:
-    path:     /search/photo/{farm}/{id}/{secret}/{server}/{title}
+    path:     /search/photo/{farm}/{id}/{secret}/{server}
     defaults: { _controller: WAFlickrBundle:Search:photomore}
 
 
